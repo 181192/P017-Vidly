@@ -18,6 +18,7 @@ namespace Vidly.Controllers
 
         }
 
+        [Route("movies/released/{year}/{month:regex(\\d{4}):range(1,12)}")]
         public ActionResult ByReleaseDate(int year, int month)
         {
             return Content(year + "/" + month);
