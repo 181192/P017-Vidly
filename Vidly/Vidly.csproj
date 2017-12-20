@@ -242,6 +242,10 @@
     <Compile Include="Migrations\201712192146178_PopulateGenreTypes.Designer.cs">
       <DependentUpon>201712192146178_PopulateGenreTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712202106422_ApplyAnnotationsToMovie.cs" />
+    <Compile Include="Migrations\201712202106422_ApplyAnnotationsToMovie.Designer.cs">
+      <DependentUpon>201712202106422_ApplyAnnotationsToMovie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -253,6 +257,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomerFormViewModel.cs" />
+    <Compile Include="ViewModels\MovieFormViewModel.cs" />
     <Compile Include="ViewModels\RandomMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -320,6 +325,7 @@
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Movies\Details.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
+    <Content Include="Views\Movies\Movieform.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -364,6 +370,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712192146178_PopulateGenreTypes.resx">
       <DependentUpon>201712192146178_PopulateGenreTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712202106422_ApplyAnnotationsToMovie.resx">
+      <DependentUpon>201712202106422_ApplyAnnotationsToMovie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
