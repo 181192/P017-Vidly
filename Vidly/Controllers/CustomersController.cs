@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web.Http;
-using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using Vidly.Models;
 using System.Data.Entity;
+using System.Web.Mvc;
 using Vidly.ViewModels;
 
 namespace Vidly.Controllers
@@ -72,7 +71,8 @@ namespace Vidly.Controllers
             return View("CustomerForm", viewModel);
         }
 
-        [System.Web.Mvc.HttpPost]
+        [System.Web.Http.HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
             if (!ModelState.IsValid)
