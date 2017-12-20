@@ -23,17 +23,6 @@ namespace Vidly.Controllers
             _context.Dispose();
         }
 
-        public ActionResult New()
-        {
-            var membershipTypes = _context.MembershipTypes.ToList();
-            var viewModel = new CustomerFormViewModel
-            {
-                MembershipTypes = membershipTypes
-            };
-
-            return View("CustomerForm", viewModel);
-        }
-
         public ActionResult Index()
         {
             var customers = _context.Customers.Include(c => c.MembershipType).ToList();
@@ -53,23 +42,15 @@ namespace Vidly.Controllers
             return View(customer);
         }
 
-        [System.Web.Mvc.HttpPost]
-        public ActionResult Save(Customer customer)
+        public ActionResult New()
         {
-            if (customer.Id == 0)
-                _context.Customers.Add(customer);
-            else
+            var membershipTypes = _context.MembershipTypes.ToList();
+            var viewModel = new CustomerFormViewModel
             {
-                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+                MembershipTypes = membershipTypes
+            };
 
-                customerInDb.Name = customer.Name;
-                customerInDb.BirthDate = customer.BirthDate;
-                customerInDb.MembershipTypeId = customer.MembershipTypeId;
-                customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
-            }
-            _context.SaveChanges();
-
-            return RedirectToAction("Index", "Customers");
+            return View("CustomerForm", viewModel);
         }
 
         public ActionResult Edit(int id)
@@ -88,6 +69,36 @@ namespace Vidly.Controllers
             };
 
             return View("CustomerForm", viewModel);
+        }
+
+        [System.Web.Mvc.HttpPost]
+        public ActionResult Save(Customer customer)
+        {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerFormViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+
+                return View("CustomerForm", viewModel);
+            }
+
+            if (customer.Id == 0)
+                _context.Customers.Add(customer);
+            else
+            {
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+
+                customerInDb.Name = customer.Name;
+                customerInDb.BirthDate = customer.BirthDate;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
+            }
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Customers");
         }
     }
 }
