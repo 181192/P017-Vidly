@@ -15,6 +15,7 @@ namespace Vidly.App_Start
             // Domain to Data Transfer Object
             Mapper.CreateMap<Customer, CustomerDto>();
             Mapper.CreateMap<Movie, MovieDto>();
+            Mapper.CreateMap<MembershipType, MembershipTypeDto>();
 
             // Data Transfer Object to Domain
             // Property 'Id' is part of object's key information and cannot be modified
