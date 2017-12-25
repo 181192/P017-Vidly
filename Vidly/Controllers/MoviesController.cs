@@ -23,17 +23,9 @@ namespace Vidly.Controllers
             _context.Dispose();
         }
 
-        [Route("movies/released/{year}/{month:regex(\\d{4}):range(1,12)}")]
-        public ActionResult ByReleaseDate(int year, int month)
+        public ViewResult Index()
         {
-            return Content(year + "/" + month);
-        }
-
-        public ActionResult Index()
-        {
-            var movies = _context.Movies.Include(m => m.Genre).ToList();
-
-            return View(movies);
+            return View(User.IsInRole(RoleName.CanManageMovies) ? "List" : "ReadOnlyList");
         }
 
         public ActionResult Details(int id)
@@ -48,23 +40,7 @@ namespace Vidly.Controllers
             return View(movie);
         }
 
-        // GET: Movies/Random
-        public ActionResult Random()
-        {
-            var id = new Random().Next(1, _context.Movies.ToList().Count);
-            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
-            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
-
-            var viewModel = new RandomMovieViewModel
-            {
-                Movie = movie,
-                Customers = customers
-            };
-
-            return View(viewModel);
-
-        }
-
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult New()
         {
             var genres = _context.Genres.ToList();
@@ -121,6 +97,29 @@ namespace Vidly.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Movies");
+        }
+
+        [Route("movies/released/{year}/{month:regex(\\d{4}):range(1,12)}")]
+        public ActionResult ByReleaseDate(int year, int month)
+        {
+            return Content(year + "/" + month);
+        }
+
+        // GET: Movies/Random
+        public ActionResult Random()
+        {
+            var id = new Random().Next(1, _context.Movies.ToList().Count);
+            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
+            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
+
+            var viewModel = new RandomMovieViewModel
+            {
+                Movie = movie,
+                Customers = customers
+            };
+
+            return View(viewModel);
+
         }
     }
 }
