@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vidly", "Vidly\Vidly.csproj", "{1A7F1B25-3CA6-4737-A3B4-F3DD47F215BE}"
 EndProject
@@ -11,16 +11,21 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Testing|Any CPU = Testing|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{1A7F1B25-3CA6-4737-A3B4-F3DD47F215BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1A7F1B25-3CA6-4737-A3B4-F3DD47F215BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A7F1B25-3CA6-4737-A3B4-F3DD47F215BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A7F1B25-3CA6-4737-A3B4-F3DD47F215BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A7F1B25-3CA6-4737-A3B4-F3DD47F215BE}.Testing|Any CPU.ActiveCfg = Testing|Any CPU
+		{1A7F1B25-3CA6-4737-A3B4-F3DD47F215BE}.Testing|Any CPU.Build.0 = Testing|Any CPU
 		{D7B293B4-FBD4-4687-BAE2-DA3CAFB69FE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D7B293B4-FBD4-4687-BAE2-DA3CAFB69FE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7B293B4-FBD4-4687-BAE2-DA3CAFB69FE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7B293B4-FBD4-4687-BAE2-DA3CAFB69FE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7B293B4-FBD4-4687-BAE2-DA3CAFB69FE3}.Testing|Any CPU.ActiveCfg = Testing|Any CPU
+		{D7B293B4-FBD4-4687-BAE2-DA3CAFB69FE3}.Testing|Any CPU.Build.0 = Testing|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
