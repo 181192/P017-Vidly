@@ -8,20 +8,17 @@ using Vidly.Models;
 
 namespace Vidly.Controllers.Api
 {
-    public class NewRentalController : ApiController
+    public class NewRentalsController : ApiController
     {
         private ApplicationDbContext _context;
 
-        public NewRentalController()
+        public NewRentalsController()
         {
             _context = new ApplicationDbContext();
         }
         [HttpPost]
         public IHttpActionResult CreateNewRentals(NewRentalDto newRental)
         {
-            if (!ModelState.IsValid)
-                return BadRequest("Something wrong happened.");
-
             if (newRental.MovieIds.Count == 0)
                 return BadRequest("No Movie Ids have been given.");
 
